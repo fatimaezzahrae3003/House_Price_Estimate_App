@@ -1,0 +1,229 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<html lang="en">
+<head>
+  <title>Navbar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,500i,700,800i" rel="stylesheet">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <style>
+
+.social-part .fa{
+    padding-right:20px;
+}
+ul li a{
+    margin-right: 20px;
+}
+
+#map_f07bfa0cdd06fadb680cb00113000733 {
+                    position: relative;
+                    width: 50.0%;
+                    height:90%;
+                    left: 50%;
+                    right: 15%;
+                    top: -12%;
+                    
+                }
+                #form{
+                    position: relative;
+                    width: 100.0%;
+                    height:80%;
+                    right: 55%;
+                    top: 0%; 
+                }
+                #titre{
+                    margin-left: 30%;
+                }
+                
+                #retour{
+                    margin-left: 10%;
+                    margin-top: -10%;
+                }
+                #deconnexion{
+                    margin-left: 10%;
+                    margin-top: -10%;
+                }
+
+  </style>
+</head>
+  <body>
+    <nav class="navbar navbar-expand-sm   navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard/">Page d'accueil<span class="sr-only">(current)</span></a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/signout">Deconnexion</a>
+          </li>
+          <li>
+            <a class="nav-link" href="https://www.google.com/intl/fr/drive/">Vos Retours</a>
+          </li>
+          </ul>
+          <div class="social-part" style="margin-left:90%;margin-top: 1%;">
+            <i class="fa fa-linkedin" aria-hidden="true"><a class="nav-link" href="https://www.linkedin.com/company/terra-modus/"></a></i>
+            <i class="fa fa-facebook" aria-hidden="true"><a class="nav-link" href="https://www.facebook.com/Terra-Modus-271842576204741/"></a></i>
+          </div>
+        </div>
+      </nav>
+      <div style="margin-left: 10%;"><h4>Estimation du prix des appartements à Temara</h4>
+      <h4 style="margin-left: 10%;">Terra modus</h4>
+      </div>
+              <div class="folium-map" id="map_f07bfa0cdd06fadb680cb00113000733" ></div>
+              <div id="form">
+                  <form method="POST", action="{{url_for('home')}}" style="margin-left: 60%;margin-top:-43%;">
+                      <div class="form-group">
+                        <label for="pwd">Longitude:</label>
+                        <input type="float" class="form-control" id="a" placeholder="Entre Longitude" name="a">
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Latitude:</label>
+                        <input type="float" class="form-control" id="b" placeholder="Entre Latitude" name="b">
+                      </div>
+                      <div class="form-group">
+                          <label for="pwd">Superficie:</label>
+                          <input type="number" class="form-control" id="c" placeholder="Entre Superficie" name="c">
+                        </div>
+                        <button type="submit" class="btn" onclick="send_data()" style="background-color: #77B8F2;text-align: center;">Prix Vente</button>
+                        <button type="submit" class="btn" onclick="send_data2()" style="background-color: #77B8F2;text-align: center;">Prix Locatif</button>
+
+                        <div class="form-group">
+                          <h3><span id="prediction" style="color: green;"></span></h3>
+                        </div>
+                        <div class="form-group">
+                          <h3><span id="location" style="color: green;"></span></h3>
+                        </div>
+                        <div class="form-group">
+                          <h4><span id="expertise"></span></h4>
+                        </div>
+                      </form>
+                </div> 
+        </div>
+</body>
+</html>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+$('.navbar-light .dmenu').hover(function () {
+        $(this).find('.sm-menu').first().stop(true, true).slideDown(150);
+    }, function () {
+        $(this).find('.sm-menu').first().stop(true, true).slideUp(105)
+    });
+});
+</script>
+
+<script>   
+  var mapOptions = {
+    center: [33.89388, -6.934],
+    crs: L.CRS.EPSG3857,
+    zoom: 12,
+    
+    mapTypeId: google.maps.MapTypeId.SATELLITE 
+                  };
+
+  var map_f07bfa0cdd06fadb680cb00113000733 = L.map(
+      "map_f07bfa0cdd06fadb680cb00113000733",mapOptions);
+
+  var tile_layer_1f3b1d32c0ba7226db3392651aac0919 = L.tileLayer(
+      "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",).addTo(map_f07bfa0cdd06fadb680cb00113000733);
+
+      var lat_lng_popup_d671e65ffb65902720dad1cc84497830 = L.popup();
+
+      function latLngPop(e) {
+          
+          pos = e.latlng
+              /*.setLatLng(e.latlng)
+              .setContent("Latitude: " + e.latlng.lat.toFixed(4) +
+                          "<br>Longitude: " + e.latlng.lng.toFixed(4))*/
+              //.openOn(map_f07bfa0cdd06fadb680cb00113000733)*
+              document.querySelector("#a").value=pos.lat
+              document.querySelector("#b").value=pos.lng
+          }
+      map_f07bfa0cdd06fadb680cb00113000733.on('click', latLngPop);   
+</script>
+
+<script>
+function form_handler(event) {
+
+event.preventDefault();
+
+}
+
+function send_data() {
+
+document.querySelector('form').addEventListener("submit",form_handler);
+var fd = new FormData(document.querySelector('form'));
+var xhr = new XMLHttpRequest();
+
+xhr.open('POST','/predict',true);
+document.getElementById("prediction").innerHTML = "Attendez l'estimation de prix de votre bien";
+xhr.onreadystatechange = function() {
+var texteAffiché = "terramodus1@gmail.com";
+if(xhr.readyState == XMLHttpRequest.DONE){
+document.getElementById('prediction').innerHTML="Prix: "+xhr.responseText;
+}
+document.getElementById("expertise").innerHTML = "Pour expertiser votre bien n’hésitez pas à nous contacter via le numéro suivant : 05 37 64 69 03 ou via cet email : "+ texteAffiché.link('https://www.google.com/intl/fr/gmail/about/');
+};
+
+xhr.onload = function() {};
+xhr.send(fd);
+}
+
+
+function send_data2() {
+
+document.querySelector('form').addEventListener("submit",form_handler);
+var fd = new FormData(document.querySelector('form'));
+var xhr = new XMLHttpRequest();
+
+xhr.open('POST','/location',true);
+document.getElementById("location").innerHTML = "Attendez l'estimation de prix locatif de votre bien";
+xhr.onreadystatechange = function() {
+
+if(xhr.readyState == XMLHttpRequest.DONE){
+document.getElementById('location').innerHTML="Prix locatif: "+xhr.responseText;
+}
+};
+
+xhr.onload = function() {};
+xhr.send(fd);
+}
+
+
+</script>

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card-wrapper">
+    <div class="card">
+      <h1 class="center">Dashboard</h1>
+      <p class="center">vous ete actuellement connecter.</p>
+      <div class="center">
+        <a href="/user/signout" class="btn">Deconnexion</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="center">vous informations</h2>
+      <p>
+        <strong>ID:</strong> {{ session['user']['_id'] }}<br>
+        <strong>Name:</strong> {{ session['user']['name'] }}<br>
+        <strong>Email:</strong> {{ session['user']['email'] }}<br>
+        <strong>Telephone:</strong> {{ session['user']['telephone'] }}
+      </p>
+    </div>
+
+    <div class="card">
+      <h2 class="center">Estimer le prix de votre bien immobiliers</h2>
+      <div class="center">
+        <a href="/estimation" class="btn">Estimer</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="center">Contact_Terra Modus</h2>
+      <p>
+        <strong>Email1:</strong>terramodus1@gmail.com <br>
+        <strong>Email2:</strong>terramodus@menara.ma<br>
+        <strong>Téléphone:</strong>06 64 49 29 13<br>
+        <strong>Fixe:</strong>05 37 64 69 03
+      </p>
+    </div>
+
+  </div>
+{% endblock %}
+
+
+
+
+
+
+
